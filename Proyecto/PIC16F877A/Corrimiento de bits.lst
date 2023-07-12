@@ -1,0 +1,148 @@
+CCS PCM C Compiler, Version 5.076, 56587               24-feb.-22 10:17
+
+               Filename:   E:\Martin Hdez\Desktop\CCS 16F\877A\Práctica 3\Corrimiento de bits.lst
+
+               ROM used:   71 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   8 (2%) at main() level
+                           9 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   023
+0003:  NOP
+.................... /* 
+.................... AUTOR: MICROSIDE TECHNOLOGY S.A. DE C.V. 
+.................... FECHA: JUNIO 2019 
+.................... */ 
+....................  
+.................... /* 
+.................... --------------------------------------------------------------------------- 
+.................... Implementar corrimiento de 8 bits y desplegar el resultado en 8 LEDs 
+.................... --------------------------------------------------------------------------- 
+.................... */ 
+....................  
+.................... #include <16F877A.h>                            //Incluye el microcontrolador con el que se va a trabajar  
+.................... //////////// Standard Header file for the PIC16F877A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877A 
+....................  
+.................... #list 
+....................  
+.................... #use delay(clock=20Mhz, crystal)                //Tipo de oscilador y frecuencia dependiendo del microcontrolador  
+*
+000D:  MOVLW  23
+000E:  MOVWF  04
+000F:  BCF    03.7
+0010:  MOVF   00,W
+0011:  BTFSC  03.2
+0012:  GOTO   020
+0013:  MOVLW  06
+0014:  MOVWF  78
+0015:  CLRF   77
+0016:  DECFSZ 77,F
+0017:  GOTO   016
+0018:  DECFSZ 78,F
+0019:  GOTO   015
+001A:  MOVLW  7B
+001B:  MOVWF  77
+001C:  DECFSZ 77,F
+001D:  GOTO   01C
+001E:  DECFSZ 00,F
+001F:  GOTO   013
+0020:  BCF    0A.3
+0021:  BCF    0A.4
+0022:  GOTO   043 (RETURN)
+....................  
+.................... byte MI_REGISTRO;                               //Variable de 8 bits(1 byte) 
+....................  
+.................... int i; 
+....................  
+.................... void SisInit(void) 
+....................  
+.................... { 
+....................  
+....................      set_tris_b (0x00);                          //Configura puerto B como salidas 
+*
+0004:  MOVLW  00
+0005:  BSF    03.5
+0006:  MOVWF  06
+....................  
+....................      MI_REGISTRO = 0x0D;                         //Se inicia cargando los bits deseados 
+0007:  MOVLW  0D
+0008:  BCF    03.5
+0009:  MOVWF  20
+000A:  BCF    0A.3
+000B:  BCF    0A.4
+000C:  GOTO   030 (RETURN)
+....................  
+.................... } 
+....................  
+.................... void main (void) 
+*
+0023:  MOVF   03,W
+0024:  ANDLW  1F
+0025:  MOVWF  03
+0026:  BSF    03.5
+0027:  BSF    1F.0
+0028:  BSF    1F.1
+0029:  BSF    1F.2
+002A:  BCF    1F.3
+002B:  MOVLW  07
+002C:  MOVWF  1C
+002D:  BCF    03.7
+....................  
+.................... { 
+....................    SisInit(); 
+002E:  BCF    03.5
+002F:  GOTO   004
+....................  
+....................    while (true) 
+....................  
+....................        { 
+....................  
+....................             MI_REGISTRO = ((MI_REGISTRO <<1)|(MI_REGISTRO>>7));        //Inicia corrimiento 
+0030:  BCF    03.0
+0031:  RLF    20,W
+0032:  MOVWF  22
+0033:  CLRF   77
+0034:  BTFSC  20.7
+0035:  BSF    77.0
+0036:  MOVF   77,W
+0037:  IORWF  22,W
+0038:  MOVWF  20
+....................  
+....................             output_b (MI_REGISTRO);                                    //Pasa el valor al puerto B 
+0039:  BSF    03.5
+003A:  CLRF   06
+003B:  BCF    03.5
+003C:  MOVF   20,W
+003D:  MOVWF  06
+....................  
+....................             delay_ms (500); 
+003E:  MOVLW  02
+003F:  MOVWF  22
+0040:  MOVLW  FA
+0041:  MOVWF  23
+0042:  GOTO   00D
+0043:  DECFSZ 22,F
+0044:  GOTO   040
+0045:  GOTO   030
+....................  
+....................         }  
+.................... } 
+0046:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

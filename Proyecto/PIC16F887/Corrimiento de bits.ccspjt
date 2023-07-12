@@ -1,0 +1,23 @@
+[PROJECT]
+Target=Corrimiento de bits.hex
+Processor_Text=PIC16F887
+CCSVersion=5.076
+Compiler=PCM
+[Target Data]
+FileList=Corrimiento de bits.c
+[Corrimiento de bits.c]
+Type=4
+[mru-list]
+1=Corrimiento de bits.c
+[Units]
+Count=1
+1=Corrimiento de bits (main)
+
+[defines]
+buildcount=1
+
+[ProjectLog]
+Days=1
+D1=24-02-2022
+D1_L=1
+D1_L1=[37189]Project Closed.

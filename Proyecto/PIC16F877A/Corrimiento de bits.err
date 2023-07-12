@@ -1,0 +1,5 @@
+Compiling E:\Martin Hdez\Desktop\CCS 16F\877A\Práctica 3\Corrimiento de bits on 24-feb.-22 at 10:17
+>>> Warning 202 "Corrimiento de bits.c" Line 17(5,6): Variable never used:   i
+      Memory usage:   ROM=1%      RAM=2% - 2%
+      0 Errors,  1 Warnings.
+Build Successful.
