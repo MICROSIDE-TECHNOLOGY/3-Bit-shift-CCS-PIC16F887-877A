@@ -1,0 +1,31 @@
+on: [push]
+
+jobs:
+  gist-sync:
+    name: gist-sync
+    runs-on: ubuntu-latest
+    steps:
+    #PIC16F877A
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: vhperaltaj/gist-sync-action@v1.0.0
+        id: PIC16F877A
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/microside-mx/086060e2a8dccf0ba731eb6534f41da0
+          gist_title: Práctica 3 - Corrimiento de bits PIC16F877A CCS.c
+          gist_description: Prácticas PIC CCS
+          github_file: Proyecto/PIC16F877A/Corrimiento de bits.c
+          file_encoding: WINDOWS-1252
+    #PIC16F887
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: vhperaltaj/gist-sync-action@v1.0.0
+        id: PIC16F887
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/microside-mx/b9a1f0f6004a53c04b39767528d6eff0
+          gist_title: Práctica 3 - Corrimiento de bits PIC16F887 CCS.c
+          gist_description: Prácticas PIC CCS
+          github_file: Proyecto/PIC16F887/Corrimiento de bits.c
+          file_encoding: WINDOWS-1252
