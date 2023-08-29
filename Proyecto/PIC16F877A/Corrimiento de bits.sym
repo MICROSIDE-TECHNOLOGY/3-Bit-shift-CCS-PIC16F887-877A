@@ -1,15 +1,15 @@
-004-005 @READ_PROGRAM_MEMORY8.P1
-004-005 @WRITE_PROGRAM_MEMORY8.P2
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
 008     PSP_DATA
-015     CCP_1_LOW
 015     CCP_1
+015     CCP_1_LOW
 016     CCP_1_HIGH
 01B     CCP_2_LOW
 01B     CCP_2
 01C     CCP_2_HIGH
-020     MI_REGISTRO
+020     LEDS
 021     i
-022     MAIN.@SCRATCH1
+022     main.@SCRATCH1
 023     @delay_ms1.P1
 077     @SCRATCH
 078     @SCRATCH
@@ -22,26 +22,24 @@
 10D-10E @WRITE_PROGRAM_MEMORY8.P2
 
 ROM Allocation:
-000004  SisInit
-00000D  @delay_ms1
-000023  MAIN
-000023  @cinit1
-00002D  @cinit2
+000004  @delay_ms1
+00001A  @cinit1
+00001A  main
+000024  @cinit2
 
 Project Directory:
-    E:\Martin Hdez\Desktop\CCS 16F\877A\Práctica 3\
+    C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC16F\3-Bit-shift-CCS-PIC16F887-877A\Proyecto\PIC16F877A\
 
 Project Files:
-    Corrimiento de bits.c                                   [24-feb.-22 10:17  CRC=C101433A]
-    ..\..\..\..\..\Program Files\PICC\Devices\16F877A.h     [15-ene.-18 15:53  CRC=63418C39]
+    Corrimiento de bits.c                                   [29-ago.-23 14:06  CRC=3B05D3E6]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICCDEMO\Devices\16F877A.h [02-may.-23 08:27  CRC=32478F9C]
 
-Source signature=87845BAC
+Source signature=9F94F31E
 Program memory checksum=0000
-Program memory CRC=0000
-Hex file CRC=FB73
+Hex file CRC=DF8E
 
 Units:
-    Corrimiento de bits (main)
+    C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC16F\3-Bit-shift-CCS-PIC16F887-877A\Proyecto\PIC16F877A\Corrimiento de bits (main)
 
 Compiler Settings:
     Processor:      PIC16F877A
@@ -50,7 +48,10 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
-    Compile Mode:       CCS5
+    Compile Mode:   CCS5
+
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
 
 Output Files:
     XREF file:   Corrimiento de bits.xsym
